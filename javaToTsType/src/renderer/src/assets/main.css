@@ -1,0 +1,19 @@
+@import './base.css';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+
+  /*background-image: url('./wavy-lines.svg');*/
+  /*overflow: hidden;*/
+  /*background-size: cover;*/
+
+}
+
+
+
+
+
