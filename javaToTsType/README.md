@@ -1,34 +1,30 @@
-# my-app
+# windmill-javatots
 
-An Electron application with Vue
+基于Vue3 + Vite + electron + Naive-ui + Tailwindcss 的java转ts工具
 
-## Recommended IDE Setup
+## 启动项目
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-
-## Project Setup
-
-### Install
+### 安装依赖
 
 ```bash
 $ pnpm install
 ```
 
-### Development
+### 项目启动
 
 ```bash
 $ pnpm dev
 ```
 
-### Build
+### 项目打包
 
 ```bash
-# For windows
+# 基于Windows的打包命令
 $ pnpm build:win
 
-# For macOS
+# 基于macOS的打包命令
 $ pnpm build:mac
 
-# For Linux
+# 基于Linux的打包命令
 $ pnpm build:linux
 ```
