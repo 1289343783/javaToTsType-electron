@@ -103,6 +103,8 @@ const javaToInterface = () => {
         });
       }
       interfaceTypeCode.value = "interface " + interfaceName.value + "{\n" + typeValue + "}";
+    }else {
+      return message.error("请输入正确的java代码");
     }
   });
   if (interfaceTypeCode.value.length === 0 || interfaceTypeCode.value === "") {
