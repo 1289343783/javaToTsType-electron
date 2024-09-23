@@ -29,14 +29,14 @@ const readJsonFile = () => {
 };
 
 //删除json文件中的选项
-const deleteJson = (_, id) => {
+const deleteJson = (_, name) => {
   return new Promise((resolve, reject) => {
     fs.readFile(join(__dirname, "../../resources/codeHistory.json").replace("app.asar", "app.asar.unpacked"), "utf8", (err, data) => {
       if (err) reject(err);
       const person = JSON.parse(data);
       //把数据读出来删除
       for (var i = 0; i < person.length; i++) {
-        if (id === person[i].id) {
+        if (name === person[i].interfaceName) {
           person.splice(i, 1);
         }
       }

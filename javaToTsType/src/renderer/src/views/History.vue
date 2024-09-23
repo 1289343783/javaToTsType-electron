@@ -46,7 +46,7 @@
                         查看
                       </n-button>
                     </router-link>
-                    <n-button size="tiny" @click="deleteJsonCodeById(item.id)">
+                    <n-button size="tiny" @click="deleteJsonCodeById(item.interfaceName)">
                       <template #icon>
                         <n-icon color="#fff">
                           <Icon icon="gravity-ui:delete" />
@@ -73,9 +73,7 @@
 import { Icon } from "@iconify/vue";
 import { ref, onMounted } from "vue";
 import { useMessage } from "naive-ui";
-import { useRouter } from "vue-router";
 
-const router = useRouter();
 //首先在setup中定义
 const message = useMessage();
 const jsonCodeValue = ref();
@@ -93,27 +91,17 @@ const getJsonCode = async () => {
 };
 /**
  * 删除Joan文件数据
- * @param id
+ * @param name
  * @returns {Promise<void>}
  */
-const deleteJsonCodeById = async (id) => {
-  await window.electron.ipcRenderer.send("del-json-data", id);
+const deleteJsonCodeById = async (name) => {
+  await window.electron.ipcRenderer.send("del-json-data", name);
   const res = await window.electron.ipcRenderer.invoke("read-json-data");
   jsonCodeValue.value = res;
   createTime.value = res[0].createTime;
   codeListLength.value = res.length;
   message.success("删除成功");
 };
-
-const toCodeInfo = (id) => {
-  router.push({
-    name: "CodeInfo",
-    query: {
-      testId: id
-    }
-  });
-};
-
 onMounted(() => {
   getJsonCode();
 });

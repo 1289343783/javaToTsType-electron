@@ -105,6 +105,11 @@ const javaToInterface = () => {
       interfaceTypeCode.value = "interface " + interfaceName.value + "{\n" + typeValue + "}";
     }
   });
+  if (interfaceTypeCode.value.length === 0 || interfaceTypeCode.value === "") {
+    isShowLoading.value = false;
+    interfaceName.value = "";
+    return message.error("请输入正确的java代码");
+  }
   addCodeJson();
   message.success("转换成功！");
   isShowLoading.value = false;
@@ -130,14 +135,12 @@ const addCodeJson = async () => {
   let res = await window.electron.ipcRenderer.invoke("read-json-data");
   console.log(res);
   if (res.length + 1 >= 20) {
-    if (res[0].id === 1) {
-      res[0].interfaceName = interfaceName.value;
-      res[0].javaCode = copyCodeValue.value;
-      res[0].typescriptCode = interfaceTypeCode.value;
-      res[0].createTime = formTime();
-      res[0].updateTime = formTime();
-      isNotNull = false;
-    }
+    res[0].interfaceName = interfaceName.value;
+    res[0].javaCode = copyCodeValue.value;
+    res[0].typescriptCode = interfaceTypeCode.value;
+    res[0].createTime = formTime();
+    res[0].updateTime = formTime();
+    isNotNull = false;
   }
   res.forEach((item) => {
     if (item.interfaceName === interfaceName.value) {
